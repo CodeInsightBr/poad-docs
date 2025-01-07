@@ -1,0 +1,240 @@
+
+# 📝 Changelog
+
+## 📅 Versão 07/01
+
+### 🔧 Correções e Ajustes
+
+#### **Geral**
+
+-   Corrigido problema onde o título da tela anterior permanecia fixado em submenus. Agora, cada submenu exibe o título correto.
+-   **Logout da Intranet**: Ajustado comportamento do logout para garantir sua correta execução.
+
+----------
+### Integração ClickSign
+
+- Criada interface de configuração na intranent
+- Implementação de todas os consumos de endpoints da API do ClickSign
+	-  createEnvelope
+	- uploadDocument
+	- createSignatureRequest
+	-  requirementSignatureRequest (agree, provide_evidence)
+	- requestSignatureRequest
+	- getDocumentStatus
+	- cancelDocument
+	- downloadSignedDocument
+
+
+A integração visa simplificar todo uso de assinatura no sistema. 
+Funções podem ser testadas em um comportamento no modulo de Locações
+Necessita trocar a chave de API nas configurações para usar a conta de vocês e verificar os documentos no ambiente de sandbox da clicksing
+
+
+###  **Módulo:  Estacionamento**
+
+-  Vouchers
+	-  Ajuste tabela
+	-  Filtro por nome e codigo
+	-  Novos campos de tipo e valor (porcentagem/valor)
+-  Convenios
+	-  Ajuste tabela
+-  Vouchers
+	-  Ajuste tabela
+----------
+
+###  **Módulo:  Gerenciamento de Quadro Social**
+
+-  Troca de nome no menu
+-  Inclusão de estatisticas na listagem
+-  Novos filtros e ajustes no filtro 
+
+###  **Módulo:  Atividades esportivas**
+
+- **Intranet**
+	- **Turmas**
+		- Mudança de exibição de turmas retirado do modal
+		- As turmas agora possuem campo de horario de domingo a segunda com horario para selecionar os horarios das aulas
+		- Novo layout para lista de turmas
+		- Correção no editar
+		- Gerenciar Pacotes
+			- Criação de pacotes
+			- Edição de pacotes
+			- Exclusão de pacotes
+			- Desabilitar/Ativar pacote
+		- Novo botão de detalhe da turma, exibe resumo da turma
+	- **Menu Matriculas**
+		- Gestão de matriculas, mostra estatisticas de todas as matriculas do sistema
+		- Filtros por Esporte, Turma, Status
+		- Alteração de Status de matricula (Ativar/Desativa)
+		- Nova Matricula
+			- Busca todos usuários do sistema
+			- Selecionar Turma/Esporte
+			- Selecionar plano (Pacote cadastrado disponivel)
+			- Possibilidade de matricular uma aula experimental
+
+- **Meu Clube**
+	- Menu Atividades Esportivas
+	- Listagem de Turmas
+	- Modal de Inscrição de Matricula
+	- Modal de Aula temporaria
+	- Minhas Matriculas
+
+- **Bugs Conhecidos/Necessidades**
+	- Intranet
+		- Ver detalhes da Matricula
+		-  Upload de documentos para assinatura
+		- Cancelamento de matricula
+	- Meu Cllube
+		- Detalhes de Matricula
+			- Assinatura de matricula
+			- Cancelamento
+		- Aula experimental esta sendo tratada como um pacote anual
+		- Aula experimental necessidade do campo de data para agendamento
+		- Termino com a inclusão do sistema de Pagamento
+	
+	- Outros pontos
+		- Verificar necessidade de formas de pagamentos e diferentes preços para tipo de associação
+		- Verificar as necessidade com os terceiros e como sera tratado
+		- Renovação de Matricula
+
+----------
+
+### 🗓 **Módulo:  Eventos**
+
+-   **Correção no filtro de pesquisa por nome**.
+-   **Adicionado novo filtro por status**, permitindo refinar a pesquisa conforme a situação dos eventos.
+-   **Novo filtro por tipo de evento**, facilitando a segmentação.
+-   **Blocos de estatísticas**: agora exibem contagem detalhada de eventos de forma mais clara e intuitiva.
+-   **Participantes**: tabela aprimorada com pesquisa/filtro e exportação para CSV, além da exibição do status do participante.
+
+----------
+### 🏢 **Módulo: Locaçao**
+
+#### **Intranet**
+
+-   **Reservas**: corrigido erro ao tentar salvar alterações em reservas, que gerava a exceção `infrastructure\core\exception\InvalidRequestException`.
+-   Adicionado status do documento.
+-   Suporte ao LibreOffice no backend para leitura de `.docx` e geração de PDFs de forma nativa.
+-   Detecção automática de variáveis em `.docx` anexado para documentos.
+-   Funcionalidade de edição e preenchimento de variáveis em documentos.
+-   **Botão de auto preenchimento**: predição automática das variáveis com base nos dados do usuário/reserva (uso de IA).    
+-   Classes auxiliares para geração de documentos.    
+-   Integração com ClickSign.
+
+- **Bugs Conhecidos/Necessidades**
+	- Ajustar o gerenciamento de Reservas no Meu Clube/Intranet
+
+   
+----------
+
+### 🚪 **Módulo: Recepeção**
+
+-   **Ambientes**: o botão "Atualizar" estava reportado como fora da margem da página, mas o erro não foi reproduzido.
+-   **Catracas**: corrigido erro onde o botão "Voltar" não retornava à página anterior.
+-   **Visitantes**:
+    -   Agora, a listagem de visitantes cadastrados é exibida corretamente.
+    -   Corrigido erro de digitação na interface ("Nunha" alterado para "Nenhuma").
+    -   Visitantes cadastrados não serão mais inseridos como credenciais temporárias.
+   
+----------
+
+### 🎫 **Módulo: Tickets**
+
+-   **Dashboard**: corrigida contagem incorreta dos tickets no dashboard.
+   
+----------
+
+### 👥 **Módulo: Staff**
+
+-   **Usuários**: corrigido erro que impedia a adição de novos usuários, mesmo com todos os dados inseridos corretamente.
+    
+----------
+
+### 🍽 **Almoço de Quinta-Feira - Intranet**
+
+-   Criada página com resumo do almoço.    
+-   Adicionada funcionalidade para download do CSV dos inscritos.    
+-   Implementada funcionalidade para remoção de usuários inscritos.    
+-   Melhorada a ordenação da listagem dos almoços por data.    
+-   Ajuste na exibição da listagem, removendo informação de texto desnecessária.    
+
+#### **Almoço de Quinta-Feira - Meu Clube**
+
+-   Adicionada validação de data ao se inscrever, impedindo erros.    
+-   Implementado modal de confirmação ao clicar em "Inscrever-se" ou "Remover Inscrição".    
+-   Usuários podem remover sua inscrição no almoço, desde que seja antes da data do evento.    
+
+----------
+
+### 💳 **Módulo: Pagamentos**
+
+-   **Implementado o comando** `**processPayment**` para gerenciar pagamentos pendentes.    
+-   **Adicionado suporte para atualização de dados de pagamento** em múltiplos gateways.    
+-   **Aprimorada a lógica de atualização dos itens do carrinho**, diferenciando eventos de outros produtos.    
+-   **Ajustados os gateways de pagamento do Banco do Brasil e Banrisul** para maior compatibilidade.    
+-   **Implementado CronJob para verificação automática do status dos pagamentos**.    
+-   **Melhoradas funções de banco de dados**, incluindo `updateIn` e migrações para armazenar informações de pagamento.
+    
+----------
+
+### 📚 **Sistema de Gerenciamento de Biblioteca**
+
+#### 📊 Relatórios
+
+#### 📖 Empréstimos
+
+-   **Período de empréstimos**:    
+    -   Gastos de emissão.        
+    -   Operador responsável.        
+    -   Saída de empréstimos no período.        
+    -   Exportação de relatórios em PDF.        
+    -   Gráficos representativos.
+        
+
+#### 💰 Multas
+
+-   **Multas em aberto**.    
+-   **Multas cobradas no período**:    
+    -   Total de empréstimos no período.        
+    -   Exportação em PDF.
+        
+
+#### 🔍 Pesquisa de Feitos Lançados
+
+-   Resultados apresentados em grafo.    
+-   Empréstimos restaurados.    
+-   Detalhamento da coleção.
+    
+
+#### 📦 Itens Extraviados
+
+-   **Detalhes**:    
+    -   Data de emissão.        
+    -   Operador responsável.        
+    -   Total de itens extraviados.        
+    -   Gráficos por tipo de item extraviado.        
+
+#### 🏷 Reservas
+
+-   **Informações gerais**:    
+    -   Data de emissão.        
+    -   Operador responsável.        
+    -   Total de reservas realizadas.        
+    -   Exportação em PDF.        
+    -   Filtros avançados.        
+    -   Gráficos com tipos e status dos itens.        
+
+#### 📋 Inventário
+
+-   Nova guia adicionada.    
+-   Inclusão de gráficos com situação e tipo de itens no inventário.
+    
+
+#### 🔎 Busca e Gestão de Usuários
+
+-   Busca por matrícula ou nome.    
+-   Expansão automática dos detalhes.    
+-   Exibição de parentesco e situação do usuário.    
+-   Operações de reservas.    
+-   Histórico de multas e empréstimos.    
+-   Criação e edição de débitos.
